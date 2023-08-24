@@ -1,0 +1,117 @@
+<!--
+ * @Author: zhangyichen
+ * @Date: 2023-07-07 22:45:13
+ * @LastEditors: zhangyichen
+ * @LastEditTime: 2023-07-16 23:35:06
+ * @Description: file content
+ * @FilePath: \vite-project\test.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // javascript
+    // class Person {
+    //   constructor(name) {
+    //     this.name = name;
+    //   }
+    //   static name = 123
+    //   greet() {
+    //     console.log(`Hello, my name is ${this.name}.`);
+    //   }
+    //   static greet2() {
+    //     console.log(`Hello, my name is ${this.name}.`);
+    //   }
+    // }
+
+    // const john = new Person('John');
+    // john.greet(); // 输出 "Hello, my name is John."
+    // Person.prototype.greet()
+    // Person.greet2()
+
+
+    console.log(Function.constructor === Function.constructor )
+    console.log(Function.__proto__ === Function.prototype)
+    console.log(Function.prototype.__proto__.__proto__)
+    console.log(Object.constructor.prototype)
+    console.log(Object.constructor.prototype === Function.prototype)
+
+
+    
+    console.log(Function.prototype === Function.prototype.constructor.prototype.constructor.prototype.constructor.prototype); // true
+    console.log(Object.__proto__ === Function.prototype)
+    console.log(Object.prototype.__proto__ === Object)
+    console.log(Object.prototype.constructor.prototype.constructor)
+    console.log(Object.constructor === Function)
+    console.log(Function.prototype ===  Function.prototype.constructor.prototype)
+    console.log(Function.constructor === Function)
+    console.log(Object.__proto__ === Object.prototype.__proto__)
+    console.log(Object.constructor.prototype === Object.__proto__)
+    console.log(Object.constructor.prototype.__proto__.__proto__)
+    console.log(Object.prototype === Object.__proto__)
+
+    function Person(name) {
+      this.name = name;
+    }
+    // 你看我理解的对不对， Object.__proto__  相当于， Object.constructor.prototype, 指向的就是
+    Person.prototype.sayHello = function() {
+      console.log("Hello, my name is " + this.name);
+    };
+
+    var person1 = new Person("Alice");
+    var person2 = new Person("Bob");
+
+    person1.sayHello(); //Alice
+    person2.sayHello(); //Bob
+
+    function Animal() {}
+
+      Animal.prototype.eat = function() {
+        console.log("The animal is eating.");
+      };
+
+      function Dog() {}
+
+      Dog.prototype = Object.create(Animal.prototype);
+
+      Dog.prototype.bark = function() {
+        console.log("The dog is barking.");
+      };
+
+      var dog = new Dog();
+
+      dog.eat(); //console.log("The animal is eating.");
+      dog.bark(); // console.log("The dog is barking.");
+
+      var obj = {};
+
+      console.log(obj.toString());
+      console.log(obj.hasOwnProperty("toString"));
+
+
+      let ozz = true
+      let bjj = Object(ozz)
+      console.log(bjj)
+
+      function Person() {}
+      console.log(Person.prototype.__proto__ === Object.prototype)
+      console.log(Person.constructor)
+
+
+      // 全局词法环境
+      var globalVar = 10; // 存储在全局环境记录中
+
+      function foo() { // 函数词法环境
+        var localVar = 20; // 存储在函数环境记录中
+        console.log(globalVar)
+      }
+
+      foo() 
+  </script>
+</body>
+</html>
